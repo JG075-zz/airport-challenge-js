@@ -7,6 +7,18 @@ Airport.prototype.land = function(plane) {
 };
 
 Airport.prototype.depart = function(plane) {
+  if (this.isStormy()) {
+    throw new Error("Plane can't depart due to stormy weather");
+  }
   var index = this.planes.indexOf(plane);
   this.planes.splice(index, 1);
+};
+
+Airport.prototype.isStormy = function() {
+  var weather = new Weather();
+  if (weather.currentWeather == 'stormy') {
+    return true;
+  } else {
+    return false;
+  }
 };
