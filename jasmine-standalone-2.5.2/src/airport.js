@@ -1,10 +1,14 @@
 function Airport() {
   this.planes = [];
+  this.CAPACITY = 1;
 }
 
 Airport.prototype.land = function(plane) {
   if (this.planes.includes(plane)) {
     throw new Error("Plane already landed");
+  }
+  if (this.planes.length >= this.CAPACITY) {
+    throw new Error("The airport is at full capacity");
   }
   this.planes.push(plane);
 };

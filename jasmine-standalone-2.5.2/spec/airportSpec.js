@@ -5,11 +5,17 @@ describe("Airport", function() {
   beforeEach(function() {
     airport = new Airport();
     plane = new Plane();
+    anotherPlane = new Plane();
   });
 
   it("should be able to land a plane", function() {
     airport.land(plane);
     expect(airport.planes).toContain(plane);
+  });
+
+  it("raises an error when airport is full", function() {
+    airport.land(plane);
+    expect(function() { airport.land(anotherPlane); }).toThrowError("The airport is at full capacity");
   });
 
   it("should throw an error if the plane is already landed", function() {
