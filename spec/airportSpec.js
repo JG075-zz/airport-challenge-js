@@ -8,6 +8,11 @@ describe("Airport", function() {
     anotherPlane = new Plane();
   });
 
+  it("allows to modify airport capacity", function() {
+    airport = new Airport(20);
+    expect(airport.capacity).toEqual(20);
+  });
+
   describe("when weather is not stormy", function() {
     beforeEach(function() {
       spyOn(airport, 'isStormy').and.returnValue(false);
