@@ -4,6 +4,9 @@ function Airport() {
 }
 
 Airport.prototype.land = function(plane) {
+  if (this.isStormy() === true) {
+    throw new Error("Can't land due to stormy weather");
+  }
   if (this.planes.includes(plane)) {
     throw new Error("Plane already landed");
   }
