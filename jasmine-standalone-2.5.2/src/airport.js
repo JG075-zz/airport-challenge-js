@@ -3,6 +3,9 @@ function Airport() {
 }
 
 Airport.prototype.land = function(plane) {
+  if (this.planes.includes(plane)) {
+    throw new Error("Plane already landed");
+  }
   this.planes.push(plane);
 };
 

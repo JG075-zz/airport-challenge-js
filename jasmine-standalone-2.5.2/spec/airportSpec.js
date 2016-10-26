@@ -12,6 +12,11 @@ describe("Airport", function() {
     expect(airport.planes).toContain(plane);
   });
 
+  it("should throw an error if the plane is already landed", function() {
+    airport.land(plane);
+    expect(function() { airport.land(plane); }).toThrowError("Plane already landed");
+  });
+
   it("should be able to allow a plane to take off", function() {
     airport.land(plane);
     spyOn(airport, 'isStormy').and.returnValue(false);
